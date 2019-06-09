@@ -39,8 +39,9 @@ class Entity {
 		int m_ypos;
 		int m_xmax;
 		int m_ymax;
+		char *m_symbol;
 
-		void init(int xpos, int ypos, int xmax, int ymax);
+		void init(int xpos, int ypos, int xmax, int ymax, char *symbol);
 };
 
 #endif
