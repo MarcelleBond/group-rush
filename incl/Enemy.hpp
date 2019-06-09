@@ -21,6 +21,8 @@ class Enemy {
 		Enemy(Enemy const & src);
 		~Enemy();
 		Enemy & operator=(Enemy const & src);
+
+		void Die();
 	private:
 
 	protected:

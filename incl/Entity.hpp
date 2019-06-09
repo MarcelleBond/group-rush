@@ -13,7 +13,7 @@
 #ifndef		ENTITY_HPP
 # define	ENTITY_HPP
 
-
+#include <string>
 
 class Entity {
 	public:
@@ -22,9 +22,12 @@ class Entity {
 		~Entity();
 		Entity & operator=(Entity const & src);
 
+		std::string getSymbol();
+		void moveUp();
+		void moveDown();
+
 		const int &getXPos();
 		const int &getYPos();
-
 		void setXPos(int update_val);
 		void setYPos(int update_val);
 
