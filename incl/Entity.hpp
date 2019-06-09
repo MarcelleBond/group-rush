@@ -22,7 +22,7 @@ class Entity {
 		~Entity();
 		Entity & operator=(Entity const & src);
 
-		char *getSymbol();
+		const char *getSymbol();
 		void moveUp();
 		void moveDown();
 
@@ -39,9 +39,9 @@ class Entity {
 		int m_ypos;
 		int m_xmax;
 		int m_ymax;
-		char *m_symbol;
+		const char *m_symbol;
 
-		void init(int xpos, int ypos, int xmax, int ymax, char *symbol);
+		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol);
 };
 
 #endif

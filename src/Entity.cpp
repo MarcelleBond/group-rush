@@ -39,7 +39,7 @@ int const & Entity::getYPos()
 	return (this->m_xpos);
 }
 
-char *Entity::getSymbol()
+const char *Entity::getSymbol()
 {
 	return(this->m_symbol);
 }
@@ -68,7 +68,7 @@ void Entity::setPos(int new_X, int new_Y)
 	setYPos(new_Y);
 }
 
-void Entity::init(int xpos, int ypos, int xmax, int ymax, char *symbol){
+void Entity::init(int xpos, int ypos, int xmax, int ymax, const char *symbol){
 	m_xpos = xpos;
 	m_ypos = ypos;
 	m_xmax = xmax;

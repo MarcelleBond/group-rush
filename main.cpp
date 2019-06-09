@@ -6,13 +6,13 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 09:02:05 by rhohls            #+#    #+#             */
-/*   Updated: 2019/06/09 12:04:32 by rhohls           ###   ########.fr       */
+/*   Updated: 2019/06/09 13:51:02 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include "./incl/Player.hpp"
+#include "./incl/Player.hpp"
 #include "./incl/Entity.hpp"
-#include "./incl/Player.hpp" */
+#include "./incl/Player.hpp" 
 #include <iostream>
 #include <ncurses.h>
 
@@ -41,6 +41,8 @@
     return false;
 } */
 
+#define NUM_ENEMY 8
+
 int main()
 {
     std::srand(time(0));
@@ -50,11 +52,25 @@ int main()
     // keypad(stdscr, true);  
     curs_set(0);
     int c;
-    // Player plyA(0, 0);
+    Player plyA(0, 0);
+
+    Enemy *list_enemies[NUM_ENEMY];
+    for (int i=0; i < NUM_ENEMY; i++)
+    {
+        list_enemies[i] = new Enemy(123, 345, 123, i + 10);
+    }
+    
+    Enemy *list_objects[NUM_ENEMY];
+    for (int i=0; i < NUM_ENEMY; i++)
+    {
+        list_objects[i] = new Enemy(123, 345, 123, i + 10, "*");
+    }
+    
     while ((c = getch()) != 27)
     {
         if (c == 32)
         {
+            
         }
         if (c == 258)
         {
