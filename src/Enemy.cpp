@@ -28,6 +28,10 @@ Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
 {
 	init(xpos, ypos, xmax, ymax, "<");
 }
+Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, char *symbol)
+{
+	init(xpos, ypos, xmax, ymax, symbol);
+}
 
 Enemy::Enemy(Enemy const &src)
 {

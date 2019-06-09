@@ -21,6 +21,7 @@ class Enemy : public Entity {
 
 		Enemy(int xmax, int ymax);
 		Enemy(int xmax, int ymax, int xpos, int ypos);
+		Enemy(int xmax, int ymax, int xpos, int ypos, char *symbol);
 		Enemy(Enemy const & src);
 		~Enemy();
 		Enemy & operator=(Enemy const & src);

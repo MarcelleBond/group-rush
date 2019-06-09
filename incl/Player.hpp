@@ -25,7 +25,7 @@ class Player : public Entity{
 
 		Player(Player const & src);
 
-		bool shoot(Enemy enemy[], int length);
+		int shoot(Enemy enemy[], int length);
 		void moveUp();
 		void moveDown();
 		char *getSymbol();
