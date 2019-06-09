@@ -11,28 +11,62 @@
 /* ************************************************************************** */
 
 #include "Player.hpp"
+#include <iostream>
 
-Player::Player() {
-	this->m_xpos = 0;
-	this->m_ypos = 0;
+Player::Player()
+{
+	std::cout << "Warning default constructor called" << std::endl;
+	init(0, 0, 256, 256);
 }
 
-Player::Player(int xpos, int ypos) {
-	this->m_xpos = xpos;
-	this->m_ypos = ypos;
+Player::Player(int xmax, int ymax)
+{
+	init(0, 0, xmax, ymax);
+}
+Player::Player(int xmax, int ymax, int xpos, int ypos)
+{
+	init(xpos, ypos, xmax, ymax);
 }
 
-Player::Player(Player const & src) {
-	*this = src;	
+Player::Player(Player const &src)
+{
+	*this = src;
 }
 
 Player::~Player() {}
 
-Player & Player::operator=(Player const & src) {
+Player &Player::operator=(Player const &src)
+{
 	if (this != &src)
-    {
-	*this = src;
-    }
+	{
+		*this = src;
+	}
 	return (*this);
 }
 
+bool Player::shoot(Enemy enemy[], int length)
+{
+	int enemy_hit = 0;
+
+	for (int i = 0; i < length; i++)
+	{
+		if (enemy[i].getYPos() == this->m_ypos)
+		{
+			enemy[i].Die();
+			enemy_hit = 1;
+		}
+	}
+	if (enemy_hit)
+		return true;
+	else
+		return false;
+}
+
+void Player::moveUp()
+{
+	setYPos(this->m_ypos++);
+}
+void Player::moveDown()
+{
+	setYPos(this->m_ypos--);
+}

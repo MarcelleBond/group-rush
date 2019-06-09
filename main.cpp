@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 09:02:05 by rhohls            #+#    #+#             */
-/*   Updated: 2019/06/09 10:20:39 by rhohls           ###   ########.fr       */
+/*   Updated: 2019/06/09 12:04:32 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ bool collision(Entity &objA, Entity &objB){
 
 int main()
 {
-    Player plyA(0, 0);
-    Player plyB(0,0);
-
+    Player plyA(20,20);
+    Player plyB(20,20);
+    Enemy en(30,30);
 
     std::cout << "the result is " << collision(plyA, plyB) << std::endl;
 }
