@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 09:02:05 by rhohls            #+#    #+#             */
-/*   Updated: 2019/06/09 13:51:02 by rhohls           ###   ########.fr       */
+/*   Updated: 2019/06/09 13:53:27 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,19 @@ int main()
         list_objects[i] = new Enemy(123, 345, 123, i + 10, "*");
     }
     
+    int object_index;
     while ((c = getch()) != 27)
     {
         if (c == 32)
         {
-            
+            if (object_index = plyA.shoot(list_objects, NUM_ENEMY) != -1)
+            {
+                // remove obect from list
+            }
+            else if (object_index = plyA.shoot(list_enemies, NUM_ENEMY) != -1)
+            {
+                //remove enemy
+            }
         }
         if (c == 258)
         {
