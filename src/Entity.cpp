@@ -42,8 +42,30 @@ int const & Entity::getYPos()
 void Entity::setXPos(int update_val)
 {
 	this->m_xpos = update_val;
+	if (this->m_xpos > this->m_xmax)
+		this->m_xpos = this->m_xmax;
+	else if (this->m_xpos < 0)
+		this->m_xpos =0;
 }
+
 void Entity::setYPos(int update_val)
 {
 	this->m_ypos = update_val;
+	if (this->m_ypos > this->m_ymax)
+		this->m_ypos = this->m_ymax;
+	else if (this->m_ypos < 0)
+		this->m_ypos = 0;
+}
+
+void Entity::setPos(int new_X, int new_Y)
+{
+	setXPos(new_X);
+	setYPos(new_Y);
+}
+
+void Entity::init(int xpos, int ypos, int xmax, int ymax){
+	m_xpos = xpos;
+	m_ypos = ypos;
+	m_xmax = xmax;
+	m_ymax = ymax;
 }

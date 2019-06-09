@@ -30,15 +30,17 @@ class Entity {
 		const int &getYPos();
 		void setXPos(int update_val);
 		void setYPos(int update_val);
-
+		void setPos(int new_X, int new_Y);
 		
 	private:
 
 	protected:
 		int m_xpos;
 		int m_ypos;
+		int m_xmax;
+		int m_ymax;
 
-
+		void init(int xpos, int ypos, int xmax, int ymax);
 };
 
 #endif

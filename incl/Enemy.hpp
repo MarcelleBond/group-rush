@@ -13,19 +13,21 @@
 #ifndef		ENEMY_HPP
 # define	ENEMY_HPP
 
+#include "Entity.hpp"
 
-
-class Enemy {
+class Enemy : public Entity {
 	public:
 		Enemy();
+
+		Enemy(int xmax, int ymax);
+		Enemy(int xmax, int ymax, int xpos, int ypos);
 		Enemy(Enemy const & src);
 		~Enemy();
 		Enemy & operator=(Enemy const & src);
 
 		void Die();
 	private:
-	int Xmax;
-	int Ymax;
+
 	protected:
 
 };

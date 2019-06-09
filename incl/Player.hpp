@@ -19,11 +19,16 @@
 class Player : public Entity{
 	public:
 		Player();
-		Player(int xpos, int ypos);
+
+		Player(int xmax, int ymax);
+		Player(int xmax, int ymax, int xpos, int ypos);
+
 		Player(Player const & src);
-		bool shoot(Enemy enemy[]);
-		void moveUp()
+
+		bool shoot(Enemy enemy[], int length);
+		void moveUp();
 		void moveDown();
+
 		~Player();
 		Player & operator=(Player const & src);
 	private:
