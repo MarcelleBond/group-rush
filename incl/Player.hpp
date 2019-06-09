@@ -14,12 +14,16 @@
 # define	PLAYER_HPP
 
 #include "Entity.hpp"
+#include "Enemy.hpp"
 
 class Player : public Entity{
 	public:
 		Player();
 		Player(int xpos, int ypos);
 		Player(Player const & src);
+		bool shoot(Enemy enemy[]);
+		void moveUp()
+		void moveDown();
 		~Player();
 		Player & operator=(Player const & src);
 	private:

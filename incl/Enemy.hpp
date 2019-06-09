@@ -24,7 +24,8 @@ class Enemy {
 
 		void Die();
 	private:
-
+	int Xmax;
+	int Ymax;
 	protected:
 
 };

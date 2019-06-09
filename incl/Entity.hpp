@@ -22,7 +22,7 @@ class Entity {
 		~Entity();
 		Entity & operator=(Entity const & src);
 
-		std::string getSymbol();
+		char *getSymbol();
 		void moveUp();
 		void moveDown();
 
