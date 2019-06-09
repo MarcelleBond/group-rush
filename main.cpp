@@ -10,39 +10,64 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./incl/Player.hpp"
+/* #include "./incl/Player.hpp"
 #include "./incl/Entity.hpp"
-#include "./incl/Player.hpp"
+#include "./incl/Player.hpp" */
 #include <iostream>
+#include <ncurses.h>
 
-
-bool collision(Entity &objA, Entity &objB){
+/* bool collision(Entity &objA, Entity &objB)
+{
     // if ((objB.getXPos() >= objA.getXPos()) && ((objB.getXPos() + objB.getXSize()) <= objA.getXPos()))
     // {
     //     if ((objB.getYPos() >= objA.getYPos()) && ((objB.getYPos() + objB.getYSize()) <= objA.getYPos()))
     //         return (true);
     // }
-    
+
     // if ((objA.getXPos() >= objB.getXPos()) && ((objA.getXPos() + objA.getXSize()) <= objB.getXPos()))
     // {
     //     if ((objA.getYPos() >= objB.getYPos()) && ((objA.getYPos() + objA.getYSize()) <= objB.getYPos()))
     //         return (true);
     // }
 
-    if (objB.getXPos() == objA.getXPos()){
-        if (objB.getYPos() == objA.getYPos()){
+    if (objB.getXPos() == objA.getXPos())
+    {
+        if (objB.getYPos() == objA.getYPos())
+        {
             return true;
         }
     }
 
-    return false;  
-}
+    return false;
+} */
 
 int main()
 {
-    Player plyA(0, 0);
-    Player plyB(0,0);
 
+    wborder(initscr(), '|', '|', '-', '-', '+', '+', '+', '+');
+    noecho();
+    nodelay(stdscr, true);
+    // keypad(stdscr, true);  
+    curs_set(0);
+    int c;
+    // Player plyA(0, 0);
+    while ((c = getch()) != 27)
+    {
+        if (c == 32)
+        {
+        }
+        if (c == 261)
+        {
+        }
+        if (c == 260)
+        {
+        }
+        refresh();
+    }
+    /////////// END GAME LOOP
+    getch();
+    refresh();
+    endwin();
 
-    std::cout << "the result is " << collision(plyA, plyB) << std::endl;
+    // std::cout << "the result is " << collision(plyA, plyB) << std::endl;
 }
