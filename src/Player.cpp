@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Player.hpp"
+#include "../incl/Player.hpp"
 #include <iostream>
-
+#include <ncurses.h>
 Player::Player()
 {
 	std::cout << "Warning default constructor called" << std::endl;
@@ -63,4 +63,9 @@ void Player::moveUp()
 void Player::moveDown()
 {
 	setYPos(this->m_ypos--);
+}
+
+const char *Player::getPlayerSymbol()
+{
+	return getSymbol();
 }

@@ -12,34 +12,9 @@
 
 #include "./incl/Player.hpp"
 #include "./incl/Entity.hpp"
-#include "./incl/Player.hpp" 
+#include "./incl/Enemy.hpp"
 #include <iostream>
 #include <ncurses.h>
-
-/* bool collision(Entity &objA, Entity &objB)
-{
-    // if ((objB.getXPos() >= objA.getXPos()) && ((objB.getXPos() + objB.getXSize()) <= objA.getXPos()))
-    // {
-    //     if ((objB.getYPos() >= objA.getYPos()) && ((objB.getYPos() + objB.getYSize()) <= objA.getYPos()))
-    //         return (true);
-    // }
-
-    // if ((objA.getXPos() >= objB.getXPos()) && ((objA.getXPos() + objA.getXSize()) <= objB.getXPos()))
-    // {
-    //     if ((objA.getYPos() >= objB.getYPos()) && ((objA.getYPos() + objA.getYSize()) <= objB.getYPos()))
-    //         return (true);
-    // }
-
-    if (objB.getXPos() == objA.getXPos())
-    {
-        if (objB.getYPos() == objA.getYPos())
-        {
-            return true;
-        }
-    }
-
-    return false;
-} */
 
 #define NUM_ENEMY 8
 
@@ -49,42 +24,55 @@ int main()
     wborder(initscr(), '|', '|', '-', '-', '+', '+', '+', '+');
     noecho();
     nodelay(stdscr, true);
-    // keypad(stdscr, true);  
+    keypad(stdscr, true);
     curs_set(0);
     int c;
-    Player plyA(0, 0);
+    int x,y;
+    getmaxyx(stdscr, y, x);
+    Player player = Player(x,y,2, y / 2);
+     Enemy list_enemies[NUM_ENEMY];
+   for (int i = 0; i < NUM_ENEMY; i++)
+    {
+        list_enemies[i] = Enemy(123, 345, 123, i + 10);
+    }
 
-    Enemy *list_enemies[NUM_ENEMY];
-    for (int i=0; i < NUM_ENEMY; i++)
+    Enemy list_objects[NUM_ENEMY];
+    for (int i = 0; i < NUM_ENEMY; i++)
     {
-        list_enemies[i] = new Enemy(123, 345, 123, i + 10);
+        list_objects[i] = Enemy(123, 345, 123, (i + 10), std::string("*").c_str());
     }
-    
-    Enemy *list_objects[NUM_ENEMY];
-    for (int i=0; i < NUM_ENEMY; i++)
-    {
-        list_objects[i] = new Enemy(123, 345, 123, i + 10, "*");
-    }
-    
+
     int object_index;
     while ((c = getch()) != 27)
     {
         if (c == 32)
         {
-            if (object_index = plyA.shoot(list_objects, NUM_ENEMY) != -1)
+            if ((object_index = player.shoot(list_objects, NUM_ENEMY)) != -1)
             {
                 // remove obect from list
+                mvprintw(list_objects[object_index].getYPos(), list_objects[object_index].getXPos(), "");
+                list_objects[object_index].Die();
+                mvprintw(list_objects[object_index].getYPos(), list_objects[object_index].getXPos(), list_objects[object_index].getSymbol());
             }
-            else if (object_index = plyA.shoot(list_enemies, NUM_ENEMY) != -1)
+            else if ((object_index = player.shoot(list_enemies, NUM_ENEMY)) != -1)
             {
                 //remove enemy
+                mvprintw(list_enemies[object_index].getYPos(), list_enemies[object_index].getXPos(), "");
+                list_enemies[object_index].Die();
+                mvprintw(list_enemies[object_index].getYPos(), list_enemies[object_index].getXPos(), list_enemies[object_index].getSymbol());
             }
         }
         if (c == 258)
         {
+            mvprintw(player.getYPos(), player.getXPos(), "");
+            player.moveUp();
+            mvprintw(player.getYPos(), player.getXPos(), player.getSymbol());
         }
         if (c == 259)
         {
+            mvprintw(player.getYPos(), player.getXPos(), "");
+            player.moveDown();
+            mvprintw(player.getYPos(), player.getXPos(), player.getSymbol());
         }
         refresh();
     }

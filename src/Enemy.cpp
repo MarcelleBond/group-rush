@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Enemy.hpp"
+#include "../incl/Enemy.hpp"
 #include <iostream>
 #include <stdlib.h>
 
@@ -28,7 +28,7 @@ Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
 {
 	init(xpos, ypos, xmax, ymax, "<");
 }
-Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, char *symbol)
+Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol)
 {
 	init(xpos, ypos, xmax, ymax, symbol);
 }
