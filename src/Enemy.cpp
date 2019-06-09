@@ -17,16 +17,16 @@
 Enemy::Enemy()
 {
 	std::cout << "Warning default constructor called" << std::endl;
-	init(0, 0, 256, 256);
+	init(0, 0, 256, 256, "<");
 }
 
 Enemy::Enemy(int xmax, int ymax)
 {
-	init(0, 0, xmax, ymax);
+	init(0, 0, xmax, ymax, "<");
 }
 Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
 {
-	init(xpos, ypos, xmax, ymax);
+	init(xpos, ypos, xmax, ymax, "<");
 }
 
 Enemy::Enemy(Enemy const &src)
