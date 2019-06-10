@@ -63,8 +63,8 @@ int Player::shoot(Enemy *enemy[], int length)
 {
 	for (int i = 0; i < length; i++)
 	{
-		if ((enemy[i]->getYPos() >= this->m_ypos) && 
-			((enemy[i]->getYPos() + enemy[i]->getYPos()) <= this->m_ypos))
+		if ((enemy[i]->getYPos() <= this->m_ypos) && 
+			((enemy[i]->getYPos() + enemy[i]->getYSize()) >= this->m_ypos))
 		{
 			return (i);
 		}
