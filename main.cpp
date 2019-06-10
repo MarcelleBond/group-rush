@@ -6,7 +6,7 @@
 /*   By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 09:02:05 by rhohls            #+#    #+#             */
-/*   Updated: 2019/06/10 08:05:48 by rhohls           ###   ########.fr       */
+/*   Updated: 2019/06/10 11:33:10 by rhohls           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <ncurses.h>
 
 #define NUM_ENEMY 8
+void DisplayEntity(Entity *obj, const char * symbol);
 
 int main()
 {
@@ -65,15 +66,15 @@ int main()
         }
         if (c == 258)
         {
-            mvprintw(player.getYPos(), player.getXPos(), "");
+            DisplayEntity(&player, " ");
             player.moveUp();
-            mvprintw(player.getYPos(), player.getXPos(), player.getSymbol());
+            DisplayEntity(&player, player.getSymbol());
         }
         if (c == 259)
         {
-            mvprintw(player.getYPos(), player.getXPos(), "");
+            DisplayEntity(&player, " ");
             player.moveDown();
-            mvprintw(player.getYPos(), player.getXPos(), player.getSymbol());
+            DisplayEntity(&player, player.getSymbol());
         }
         refresh(); 
     }
@@ -83,4 +84,22 @@ int main()
     endwin();
 
     // std::cout << "the result is " << collision(plyA, plyB) << std::endl;
+}
+
+
+void DisplayEntity(Entity *obj, const char * symbol)
+{
+    int x = obj->getXPos();
+    int y = obj->getYPos();
+
+    int xsize = obj->getXSize();
+    int ysize = obj->getYSize();
+    
+    for (int i=0; i < xsize; i++)
+    {
+        for (int j=0; j < ysize; j++)
+        {
+            mvprintw(y + j, x + i, symbol);
+        } 
+    }
 }

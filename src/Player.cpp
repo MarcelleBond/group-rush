@@ -72,33 +72,33 @@ int Player::shoot(Enemy *enemy[], int length)
 		return (-1);
 }
 
-// bool Player::collision(Enemy *enemy[], int length)
-// {
-// 	for (int i = 0; i < length; i++)
-// 	{
-// 		if (chk_collision(enemy[i], this))
-// 		{
-// 			return (true);
-// 		}
-// 	}
-// 	return (false);
-// }
+bool Player::collision(Enemy *enemy[], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		if (this->chk_collision(enemy[i], this))
+		{
+			return (true);
+		}
+	}
+	return (false);
+}
 
-// bool chk_collision(Entity *objA, Entity *objB){
-//     if ((objB->getXPos() >= objA->getXPos()) && ((objB->getXPos() + objB->getXSize()) <= objA->getXPos()))
-//     {
-//         if ((objB->getYPos() >= objA->getYPos()) && ((objB->getYPos() + objB->getYSize()) <= objA->getYPos()))
-//             return (true);
-//     }
+bool Player::chk_collision(Entity *objA, Entity *objB){
+    if ((objB->getXPos() >= objA->getXPos()) && ((objB->getXPos() + objB->getXSize()) <= objA->getXPos()))
+    {
+        if ((objB->getYPos() >= objA->getYPos()) && ((objB->getYPos() + objB->getYSize()) <= objA->getYPos()))
+            return (true);
+    }
     
-//     if ((objA->getXPos() >= objB->getXPos()) && ((objA->getXPos() + objA->getXSize()) <= objB->getXPos()))
-//     {
-//         if ((objA->getYPos() >= objB->getYPos()) && ((objA->getYPos() + objA->getYSize()) <= objB->getYPos()))
-//             return (true);
-//     }
+    if ((objA->getXPos() >= objB->getXPos()) && ((objA->getXPos() + objA->getXSize()) <= objB->getXPos()))
+    {
+        if ((objA->getYPos() >= objB->getYPos()) && ((objA->getYPos() + objA->getYSize()) <= objB->getYPos()))
+            return (true);
+    }
 
-//     return false;  
-// }
+    return false;  
+}
 
 
 

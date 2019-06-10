@@ -34,6 +34,7 @@ class Player : public Entity{
 		Player & operator=(Player const & src);
 	private:
 		int m_numLives;
+		bool chk_collision(Entity *objA, Entity *objB);
 
 	protected:
 
