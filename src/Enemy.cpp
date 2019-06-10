@@ -57,6 +57,6 @@ void Enemy::Die()
 {
 	int rand_y;
 
-	rand_y = rand() % this->m_ymax;
+	rand_y = rand() % (this->m_ymax) + 1 ;
 	setPos(this->m_xmax, rand_y);
 }
