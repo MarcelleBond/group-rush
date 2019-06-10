@@ -21,6 +21,7 @@ class Enemy : public Entity {
 
 		Enemy(int xmax, int ymax);
 		Enemy(int xmax, int ymax, int xpos, int ypos);
+		// Enemy(int xmax, int ymax, int xpos, int ypos, int points);
 		Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol);
 		Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol, int xsize, int ysize);
 
@@ -30,6 +31,7 @@ class Enemy : public Entity {
 
 		void Die();
 	private:
+		// int m_points;
 
 	protected:
 

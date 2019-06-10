@@ -18,6 +18,8 @@
 
 class Player : public Entity{
 	public:
+		int score;
+
 		Player();
 
 		Player(int xmax, int ymax);

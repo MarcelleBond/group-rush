@@ -67,8 +67,8 @@ void Entity::setYPos(int update_val)
 	m_ypos = update_val;
 	if (m_ypos > m_ymax)
 		m_ypos = m_ymax;
-	else if (m_ypos < 0)
-		m_ypos = 0;
+	else if (m_ypos < 1)
+		m_ypos = 1;
 }
 
 void Entity::setPos(int new_X, int new_Y)

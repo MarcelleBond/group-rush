@@ -28,6 +28,10 @@ Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
 {
 	init(xpos, ypos, xmax, ymax, "<", 1, 1);
 }
+// Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
+// {
+// 	init(xpos, ypos, xmax, ymax, "<", 1, 1);
+// }
 Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol)
 {
 	init(xpos, ypos, xmax, ymax, symbol, 1, 1);
@@ -56,7 +60,14 @@ Enemy &Enemy::operator=(Enemy const &src)
 void Enemy::Die()
 {
 	int rand_y;
+	int max;
 
-	rand_y = rand() % (this->m_ymax) + 1 ;
+	if (m_ymax == 0)
+		max = 10;
+	else
+		max = m_ymax;
+	
+	rand_y = rand() % (max) + 1 ;
+	// rand_y = 10;
 	setPos(this->m_xmax, rand_y);
 }
