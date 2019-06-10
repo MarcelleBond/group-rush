@@ -36,7 +36,7 @@ int const & Entity::getXPos()
 }
 int const & Entity::getYPos()
 {
-	return (this->m_xpos);
+	return (this->m_ypos);
 }
 
 const char *Entity::getSymbol()

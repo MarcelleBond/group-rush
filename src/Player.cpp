@@ -58,11 +58,13 @@ int Player::shoot(Enemy *enemy[], int length)
 
 void Player::moveUp()
 {
-	setYPos(this->m_ypos++);
+	// setYPos(this->m_ypos++);
+	m_ypos -= 1;
 }
 void Player::moveDown()
 {
-	setYPos(this->m_ypos--);
+	// setYPos(this->m_ypos--);
+	m_ypos += 1;
 }
 
 const char *Player::getPlayerSymbol()
