@@ -28,6 +28,8 @@ class Entity {
 
 		const int &getXPos();
 		const int &getYPos();
+		const int &getXSize();
+		const int &getYSize();
 		void setXPos(int update_val);
 		void setYPos(int update_val);
 		void setPos(int new_X, int new_Y);

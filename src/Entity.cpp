@@ -38,6 +38,15 @@ int const & Entity::getYPos()
 {
 	return (this->m_xpos);
 }
+int const & Entity::getXSize()
+{
+	return (this->m_xsize );
+}
+int const & Entity::getYSize()
+{
+	return (this->m_xsize );
+}
+
 
 const char *Entity::getSymbol()
 {

@@ -22,10 +22,12 @@ class Player : public Entity{
 
 		Player(int xmax, int ymax);
 		Player(int xmax, int ymax, int xpos, int ypos);
+		Player(int xmax, int ymax, int xpos, int ypos, int numlives);
 
 		Player(Player const & src);
 
 		int shoot(Enemy *enemy[], int length);
+		bool collision(Enemy *enemy[], int length);
 		void moveUp();
 		void moveDown();
 		const char *getPlayerSymbol();
@@ -33,6 +35,7 @@ class Player : public Entity{
 		~Player();
 		Player & operator=(Player const & src);
 	private:
+		int m_numLives;
 
 	protected:
 
