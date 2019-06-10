@@ -19,7 +19,8 @@ Player::Player() : m_numLives(5)
 	init(0, 0, 256, 256, ">", 1, 1);
 }
 
-Player::Player(int xmax, int ymax) : m_numLives(5)
+Player::Player(int xmax, int ymax) : m_numLives(5
+)
 {
 	init(0, 0, xmax, ymax, ">", 1, 1);
 }

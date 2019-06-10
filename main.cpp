@@ -18,9 +18,13 @@
 
 #define NUM_ENEMY 8
 void DisplayEntity(Entity *obj, const char * symbol);
+void MoveObjects(Enemy *villain[], int numVil);
 
 int main()
 {
+    int secondsLeft = 0;
+    int seconds = 0;
+    int seconds2 = 0;
     std::srand(time(0));
     wborder( initscr(), '|', '|', '-', '-', '+', '+', '+', '+');
     noecho();
@@ -52,6 +56,22 @@ int main()
     int object_index;
     while ((c = getch()) != 27)
     {
+        mvprintw(2,1,"Seconds: %d", seconds);
+        mvprintw(3,1,"milli seconds: %d", secondsLeft);
+        secondsLeft++;
+        napms(1);
+        if (secondsLeft == 100)
+        {
+            secondsLeft = 0;
+            seconds++;
+            seconds2++;
+        }
+        if (seconds2 == 1)
+        {
+           MoveObjects(list_enemies, NUM_ENEMY);
+           MoveObjects(list_objects, NUM_ENEMY);
+           seconds2 = 0;
+        }
         if (c == 32)
         {
             if ((object_index = player.shoot(list_objects, NUM_ENEMY)) != -1)
@@ -108,5 +128,17 @@ void DisplayEntity(Entity *obj, const char * symbol)
         {
             mvprintw(y + j, x + i, symbol);
         } 
+    }
+}
+
+void MoveObjects(Enemy *villain[], int numVil)
+{
+    for (int i = 0; i <= numVil; i++)
+    {
+        /* code */
+        mvprintw(villain[i]->getYPos() ,villain[i]->getXPos(), " ");
+        villain[i]->setPos(villain[i]->getXPos() - 1,villain[i]->getYPos());
+        DisplayEntity(villain[i], villain[i]->getSymbol());
+
     }
 }
