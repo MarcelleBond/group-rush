@@ -14,31 +14,27 @@
 #include <iostream>
 #include <ncurses.h>
 Player::Player() 
-	: score(0), m_numLives(5)
 {
 	std::cout << "Warning default constructor called" << std::endl;
 	init(0, 0, 256, 256, ">", 1, 1);
 }
 
 Player::Player(int xmax, int ymax) 
-	:score(0), m_numLives(5)
 {
 	init(0, 0, xmax, ymax, ">", 1, 1);
 }
 Player::Player(int xmax, int ymax, int xpos, int ypos)
-	:score(0), m_numLives(5)
 {
 	init(xpos, ypos, xmax, ymax, ">", 1, 1);
 }
 
 Player::Player(int xmax, int ymax, int xpos, int ypos, int numlives)
-	:score(0)
 {
-	m_numLives = numlives;
 	init(xpos, ypos, xmax, ymax, ">", 1, 1);
+	m_numLives = numlives;
 }
 
-Player::Player(Player const &src) : m_numLives(5)
+Player::Player(Player const &src)
 {
 	*this = src;
 }
@@ -54,6 +50,17 @@ Player &Player::operator=(Player const &src)
 	return (*this);
 }
 
+void Player::init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize){
+	m_xpos = xpos;
+	m_ypos = ypos;
+	m_xmax = xmax;
+	m_ymax = ymax;
+	m_symbol = symbol;
+	m_xsize = xsize;
+	m_ysize = ysize;
+	m_numLives = 5;
+	score = 0;
+}
 
 
 

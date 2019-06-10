@@ -28,10 +28,11 @@ Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
 {
 	init(xpos, ypos, xmax, ymax, "<", 1, 1);
 }
-// Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
-// {
-// 	init(xpos, ypos, xmax, ymax, "<", 1, 1);
-// }
+Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, int in_points)
+{
+	init(xpos, ypos, xmax, ymax, "<", 1, 1);
+	points = in_points;
+}
 Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol)
 {
 	init(xpos, ypos, xmax, ymax, symbol, 1, 1);
@@ -56,6 +57,20 @@ Enemy &Enemy::operator=(Enemy const &src)
 	}
 	return (*this);
 }
+
+void Enemy::init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize){
+	m_xpos = xpos;
+	m_ypos = ypos;
+	m_xmax = xmax;
+	m_ymax = ymax;
+	m_symbol = symbol;
+	m_xsize = xsize;
+	m_ysize = ysize;
+	points = 0;
+}
+
+
+
 
 void Enemy::Die()
 {

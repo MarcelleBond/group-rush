@@ -31,6 +31,8 @@ class Player : public Entity{
 		int shoot(Enemy *enemy[], int length);
 		bool collision(Enemy *enemy[], int length);
 		const char *getPlayerSymbol();
+		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize);
+
 
 		~Player();
 		Player & operator=(Player const & src);

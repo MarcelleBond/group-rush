@@ -45,8 +45,7 @@ class Entity {
 		int m_xsize;
 		int m_ysize;
 
-		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol);
-		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize);
+		virtual void init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize) = 0;
 
 };
 

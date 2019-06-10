@@ -17,11 +17,12 @@
 
 class Enemy : public Entity {
 	public:
+		int points;
 		Enemy();
 
 		Enemy(int xmax, int ymax);
 		Enemy(int xmax, int ymax, int xpos, int ypos);
-		// Enemy(int xmax, int ymax, int xpos, int ypos, int points);
+		Enemy(int xmax, int ymax, int xpos, int ypos, int in_points);
 		Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol);
 		Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol, int xsize, int ysize);
 
@@ -29,9 +30,9 @@ class Enemy : public Entity {
 		~Enemy();
 		Enemy & operator=(Enemy const & src);
 
+		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize);
 		void Die();
 	private:
-		// int m_points;
 
 	protected:
 

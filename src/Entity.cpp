@@ -87,12 +87,3 @@ void Entity::moveDown()
 }
 
 
-void Entity::init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize){
-	m_xpos = xpos;
-	m_ypos = ypos;
-	m_xmax = xmax;
-	m_ymax = ymax;
-	m_symbol = symbol;
-	m_xsize = xsize;
-	m_ysize = ysize;
-}
