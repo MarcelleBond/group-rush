@@ -44,11 +44,11 @@ Player &Player::operator=(Player const &src)
 	return (*this);
 }
 
-int Player::shoot(Enemy enemy[], int length)
+int Player::shoot(Enemy *enemy[], int length)
 {
 	for (int i = 0; i < length; i++)
 	{
-		if (enemy[i].getYPos() == this->m_ypos)
+		if (enemy[i]->getYPos() == this->m_ypos)
 		{
 			return (i);
 		}

@@ -1,18 +1,65 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rhohls <rhohls@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/06/22 11:19:09 by rhohls            #+#    #+#              #
+#    Updated: 2019/06/10 08:01:15 by rhohls           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = ft_retro
-SOURCES = main.cpp ./src/*.cpp 
 
-$(NAME):
-	@g++ -Wall -Werror -Wextra -lncurses $(SOURCES) -o $(NAME)
-	@echo "\033[1;32;4mCOMPILING SUCCESSFUL"
+#Paths
+SRC_PATH = ./src/
+OBJ_PATH = ./obj/
+INC_PATH = ./incl/
 
-all: $(NAME)
+#Files
+SRC_FILE =	Entity.cpp \
+			Player.cpp \
+			Enemy.cpp \
+
+OBJ_FILE = $(SRC_FILE:%.cpp=%.o)
+
+SRC = $(addprefix $(SRC_PATH), $(SRC_FILE))
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_FILE))
+
+#Additional
+MAIN ?= main.cpp
+
+#Compiler
+CCFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = clang++ $(CCFLAGS)
+
+
+#Commands
+all: $(NAME) 
+
+$(NAME): $(SRC_PATH) $(OBJ_PATH) $(INC_PATH) $(OBJ) $(MAIN)
+	$(CC) $(MAIN) -o $@ $(OBJ) -lncurses
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
+	$(CC) -I$(INC_PATH) -o $@ -c $<
 
 clean:
-	@rm -f $(NAME)
-	@echo "\033[1;34;4mCLEAN SUCCESSFUL\033[0m"
+	/bin/rm -rf $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "\033[1;34;4mFCLEAN SUCCESSFUL\033[0m"
+	/bin/rm $(NAME)
 
 re: fclean all
+
+.PHONY: re fclean clean all
+
+#mkdir
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH)
+
+$(INC_PATH):
+	mkdir $(INC_PATH)
+
+$(SRC_PATH):
+	mkdir $(SRC_PATH)
