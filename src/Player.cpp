@@ -13,22 +13,29 @@
 #include "../incl/Player.hpp"
 #include <iostream>
 #include <ncurses.h>
-Player::Player()
+Player::Player() : m_numLives(5)
 {
 	std::cout << "Warning default constructor called" << std::endl;
-	init(0, 0, 256, 256, ">");
+	init(0, 0, 256, 256, ">", 1, 1);
 }
 
-Player::Player(int xmax, int ymax)
+Player::Player(int xmax, int ymax) : m_numLives(5)
 {
-	init(0, 0, xmax, ymax, ">");
+	init(0, 0, xmax, ymax, ">", 1, 1);
 }
 Player::Player(int xmax, int ymax, int xpos, int ypos)
+	:m_numLives(5)
 {
-	init(xpos, ypos, xmax, ymax, ">");
+	init(xpos, ypos, xmax, ymax, ">", 1, 1);
 }
 
-Player::Player(Player const &src)
+Player::Player(int xmax, int ymax, int xpos, int ypos, int numlives) 
+{
+	m_numLives = numlives;
+	init(xpos, ypos, xmax, ymax, ">", 1, 1);
+}
+
+Player::Player(Player const &src) : m_numLives(5)
 {
 	*this = src;
 }
@@ -44,11 +51,20 @@ Player &Player::operator=(Player const &src)
 	return (*this);
 }
 
+
+
+
+const char *Player::getPlayerSymbol()
+{
+	return getSymbol();
+}
+
 int Player::shoot(Enemy *enemy[], int length)
 {
 	for (int i = 0; i < length; i++)
 	{
-		if (enemy[i]->getYPos() == this->m_ypos)
+		if ((enemy[i]->getYPos() >= this->m_ypos)) /*&& 
+			((enemy[i]->getYPos() + enemy[i]->getYSize()) <= this->m_ypos))  */
 		{
 			return (i);
 		}
@@ -56,18 +72,33 @@ int Player::shoot(Enemy *enemy[], int length)
 		return (-1);
 }
 
-void Player::moveUp()
+bool Player::collision(Enemy *enemy[], int length)
 {
-	// setYPos(this->m_ypos++);
-	m_ypos -= 1;
-}
-void Player::moveDown()
-{
-	// setYPos(this->m_ypos--);
-	m_ypos += 1;
+	for (int i = 0; i < length; i++)
+	{
+		if (this->chk_collision(enemy[i], this))
+		{
+			return (true);
+		}
+	}
+	return (false);
 }
 
-const char *Player::getPlayerSymbol()
-{
-	return getSymbol();
+bool Player::chk_collision(Entity *objA, Entity *objB){
+    if ((objB->getXPos() >= objA->getXPos()) && ((objB->getXPos() + objB->getXSize()) <= objA->getXPos()))
+    {
+        if ((objB->getYPos() >= objA->getYPos()) && ((objB->getYPos() + objB->getYSize()) <= objA->getYPos()))
+            return (true);
+    }
+    
+    if ((objA->getXPos() >= objB->getXPos()) && ((objA->getXPos() + objA->getXSize()) <= objB->getXPos()))
+    {
+        if ((objA->getYPos() >= objB->getYPos()) && ((objA->getYPos() + objA->getYSize()) <= objB->getYPos()))
+            return (true);
+    }
+
+    return false;  
 }
+
+
+

@@ -22,17 +22,19 @@ class Player : public Entity{
 
 		Player(int xmax, int ymax);
 		Player(int xmax, int ymax, int xpos, int ypos);
+		Player(int xmax, int ymax, int xpos, int ypos, int numlives);
 
 		Player(Player const & src);
 
 		int shoot(Enemy *enemy[], int length);
-		void moveUp();
-		void moveDown();
+		bool collision(Enemy *enemy[], int length);
 		const char *getPlayerSymbol();
 
 		~Player();
 		Player & operator=(Player const & src);
 	private:
+		int m_numLives;
+		bool chk_collision(Entity *objA, Entity *objB);
 
 	protected:
 

@@ -26,8 +26,10 @@ class Entity {
 		void moveUp();
 		void moveDown();
 
-		const int &getXPos();
-		const int &getYPos();
+		int getXPos();
+		int getYPos();
+		int getXSize();
+		int getYSize();
 		void setXPos(int update_val);
 		void setYPos(int update_val);
 		void setPos(int new_X, int new_Y);
@@ -40,8 +42,12 @@ class Entity {
 		int m_xmax;
 		int m_ymax;
 		const char *m_symbol;
+		int m_xsize;
+		int m_ysize;
 
 		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol);
+		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize);
+
 };
 
 #endif

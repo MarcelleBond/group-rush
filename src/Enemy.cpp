@@ -17,20 +17,24 @@
 Enemy::Enemy()
 {
 	std::cout << "Warning default constructor called" << std::endl;
-	init(0, 0, 256, 256, "<");
+	init(0, 0, 256, 256, "<", 1, 1);
 }
 
 Enemy::Enemy(int xmax, int ymax)
 {
-	init(0, 0, xmax, ymax, "<");
+	init(0, 0, xmax, ymax, "<", 1, 1);
 }
 Enemy::Enemy(int xmax, int ymax, int xpos, int ypos)
 {
-	init(xpos, ypos, xmax, ymax, "<");
+	init(xpos, ypos, xmax, ymax, "<", 1, 1);
 }
 Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol)
 {
-	init(xpos, ypos, xmax, ymax, symbol);
+	init(xpos, ypos, xmax, ymax, symbol, 1, 1);
+}
+Enemy::Enemy(int xmax, int ymax, int xpos, int ypos, const char *symbol, int xsize, int ysize)
+{
+	init(xpos, ypos, xmax, ymax, symbol, xsize, ysize);
 }
 
 Enemy::Enemy(Enemy const &src)
@@ -53,6 +57,6 @@ void Enemy::Die()
 {
 	int rand_y;
 
-	rand_y = rand() % (this->m_ymax - 1) + 1 ;
+	rand_y = rand() % (this->m_ymax) + 1 ;
 	setPos(this->m_xmax, rand_y);
 }
