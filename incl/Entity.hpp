@@ -26,10 +26,10 @@ class Entity {
 		void moveUp();
 		void moveDown();
 
-		const int &getXPos();
-		const int &getYPos();
-		const int &getXSize();
-		const int &getYSize();
+		int getXPos();
+		int getYPos();
+		int getXSize();
+		int getYSize();
 		void setXPos(int update_val);
 		void setYPos(int update_val);
 		void setPos(int new_X, int new_Y);

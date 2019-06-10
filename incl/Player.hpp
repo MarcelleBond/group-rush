@@ -28,8 +28,6 @@ class Player : public Entity{
 
 		int shoot(Enemy *enemy[], int length);
 		bool collision(Enemy *enemy[], int length);
-		void moveUp();
-		void moveDown();
 		const char *getPlayerSymbol();
 
 		~Player();

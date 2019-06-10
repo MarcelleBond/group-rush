@@ -23,7 +23,8 @@ Player::Player(int xmax, int ymax) : m_numLives(5)
 {
 	init(0, 0, xmax, ymax, ">", 1, 1);
 }
-Player::Player(int xmax, int ymax, int xpos, int ypos) : m_numLives(5)
+Player::Player(int xmax, int ymax, int xpos, int ypos)
+	:m_numLives(5)
 {
 	init(xpos, ypos, xmax, ymax, ">", 1, 1);
 }
@@ -51,14 +52,7 @@ Player &Player::operator=(Player const &src)
 }
 
 
-void Player::moveUp()
-{
-	setYPos(this->m_ypos++);
-}
-void Player::moveDown()
-{
-	setYPos(this->m_ypos--);
-}
+
 
 const char *Player::getPlayerSymbol()
 {
@@ -78,30 +72,33 @@ int Player::shoot(Enemy *enemy[], int length)
 		return (-1);
 }
 
-bool Player::collision(Enemy *enemy[], int length)
-{
-	for (int i = 0; i < length; i++)
-	{
-		if (chk_collision(enemy[i], this))
-		{
-			return (true);
-		}
-	}
-	return (false);
-}
+// bool Player::collision(Enemy *enemy[], int length)
+// {
+// 	for (int i = 0; i < length; i++)
+// 	{
+// 		if (chk_collision(enemy[i], this))
+// 		{
+// 			return (true);
+// 		}
+// 	}
+// 	return (false);
+// }
 
-bool chk_collision(Entity *objA, Entity *objB){
-    if ((objB->getXPos() >= objA->getXPos()) && ((objB->getXPos() + objB->getXSize()) <= objA->getXPos()))
-    {
-        if ((objB->getYPos() >= objA->getYPos()) && ((objB->getYPos() + objB->getYSize()) <= objA->getYPos()))
-            return (true);
-    }
+// bool chk_collision(Entity *objA, Entity *objB){
+//     if ((objB->getXPos() >= objA->getXPos()) && ((objB->getXPos() + objB->getXSize()) <= objA->getXPos()))
+//     {
+//         if ((objB->getYPos() >= objA->getYPos()) && ((objB->getYPos() + objB->getYSize()) <= objA->getYPos()))
+//             return (true);
+//     }
     
-    if ((objA->getXPos() >= objB->getXPos()) && ((objA->getXPos() + objA->getXSize()) <= objB->getXPos()))
-    {
-        if ((objA->getYPos() >= objB->getYPos()) && ((objA->getYPos() + objA->getYSize()) <= objB->getYPos()))
-            return (true);
-    }
+//     if ((objA->getXPos() >= objB->getXPos()) && ((objA->getXPos() + objA->getXSize()) <= objB->getXPos()))
+//     {
+//         if ((objA->getYPos() >= objB->getYPos()) && ((objA->getYPos() + objA->getYSize()) <= objB->getYPos()))
+//             return (true);
+//     }
 
-    return false;  
-}
+//     return false;  
+// }
+
+
+
