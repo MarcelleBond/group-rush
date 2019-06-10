@@ -40,8 +40,12 @@ class Entity {
 		int m_xmax;
 		int m_ymax;
 		const char *m_symbol;
+		int m_xsize;
+		int m_ysize;
 
 		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol);
+		void init(int xpos, int ypos, int xmax, int ymax, const char *symbol, int xsize, int ysize);
+
 };
 
 #endif
